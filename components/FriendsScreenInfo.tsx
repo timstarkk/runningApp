@@ -21,7 +21,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
           style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
           darkColor="rgba(255,255,255,0.05)"
           lightColor="rgba(0,0,0,0.05)">
-          <MonoText>{path}</MonoText>
+          <MonoText>{'Simple friends screen with an add friend button at the top right, within the kind of header, and underneath in rows each friend based on most recent conversation, you can chat, or view the friends profile by clicking on their avatar'}</MonoText>
         </View>
 
         {/* <Text
