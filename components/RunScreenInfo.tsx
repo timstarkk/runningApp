@@ -1,31 +1,67 @@
 import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
-import { StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
-import MapView from 'react-native-maps';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
+import MapView, { Marker, AnimatedRegion } from 'react-native-maps';
+import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
+import Constants from 'expo-constants';
+
+const icon = require('../assets/images/favicon.png');
 
 import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
+import iconSet from '@expo/vector-icons/build/FontAwesome5';
 
 export default function EditScreenInfo({ path }: { path: string }) {
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  useEffect(() => {
+    if (Platform.OS === 'android' && !Constants.isDevice) {
+      setErrorMsg(
+        'Oops, this will not work on Sketch in an Android emulator. Try it on your device!'
+      );
+    } else {
+      (async () => {
+        let { status } = await Location.requestPermissionsAsync();
+        if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied');
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        setLocation(location);
+      })();
+    }
+  });
+
+  let text = 'Waiting..';
+  let latitude = 0;
+  let longitude = 0;
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    latitude = location.coords.latitude;
+    longitude = location.coords.longitude;
+  }
+
   return (
-    <View>
-
-      <View style={styles.getStartedContainer}>
-        <MapView style={styles.mapStyle} />
-      </View>
-
-
-      {/* //this was the button basically  *below*  */}
-      {/* <View style={styles.helpContainer}>
-        <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
-            Tap here if your app doesn't automatically update after making changes
-          </Text>
-        </TouchableOpacity>
-      </View> */}
+    <View style={styles.container}>
+      <MapView style={styles.mapStyle} region={{
+        latitude: latitude,
+        longitude: longitude,
+        latitudeDelta: 0.004,
+        longitudeDelta: 0.004
+      }}>
+        <Marker
+            coordinate={{latitude, longitude}}
+            image={icon}
+        />
+         
+      </MapView>
     </View>
   );
+
 }
 
 function handleHelpPress() {
@@ -35,10 +71,10 @@ function handleHelpPress() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
+  // container: {
+  //   flex: 1,
+  //   backgroundColor: '#fff',
+  // },
   developmentModeText: {
     marginBottom: 20,
     fontSize: 14,
@@ -93,5 +129,17 @@ const styles = StyleSheet.create({
   mapStyle: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    textAlign: 'center',
   },
 });
