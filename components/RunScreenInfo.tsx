@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import MapView from 'react-native-maps';
 
 import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
@@ -9,36 +10,20 @@ import { Text, View } from './Themed';
 export default function EditScreenInfo({ path }: { path: string }) {
   return (
     <View>
+
       <View style={styles.getStartedContainer}>
-        {/* <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          Open up the code for this screen:
-        </Text> */}
-
-        <View
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)">
-          <MonoText>{'here I need to add a map as background, on the map at the bottom i want to add a "start run" button'}</MonoText>
-        </View>
-
-        {/* <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          Change any of the text, save the file, and your app will automatically update.
-        </Text> */}
+        <MapView style={styles.mapStyle} />
       </View>
 
-      <View style={styles.helpContainer}>
+
+      {/* //this was the button basically  *below*  */}
+      {/* <View style={styles.helpContainer}>
         <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
           <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
             Tap here if your app doesn't automatically update after making changes
           </Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -77,7 +62,7 @@ const styles = StyleSheet.create({
   },
   getStartedContainer: {
     alignItems: 'center',
-    marginHorizontal: 50,
+    marginHorizontal: 0,
   },
   homeScreenFilename: {
     marginVertical: 7,
@@ -104,5 +89,9 @@ const styles = StyleSheet.create({
   },
   helpLinkText: {
     textAlign: 'center',
+  },
+  mapStyle: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
 });
