@@ -19,7 +19,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "dev.timstark.runningApp",
+      "config": {
+        "googleMapsApiKey": "AIzaSyD1JkB9xrYoZBovtCjJVT7Ep-EMwRsx6Sk"
+      }
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
