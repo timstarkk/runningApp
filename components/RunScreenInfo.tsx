@@ -26,11 +26,14 @@ export default function EditScreenInfo({ path }: { path: string }) {
       );
     } else {
       (async () => {
+        // request access to location data on user device
         let { status } = await Location.requestPermissionsAsync();
+        // if access is denied:
         if (status !== 'granted') {
           setErrorMsg('Permission to access location was denied');
         }
-
+        
+        // if access is not denied, save current position as 'location' variable
         let location = await Location.getCurrentPositionAsync({});
         setLocation(location);
       })();
@@ -40,7 +43,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
   let text = 'Waiting..';
   let latitude = 0;
   let longitude = 0;
-  
+
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
