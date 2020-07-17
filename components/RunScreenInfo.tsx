@@ -15,6 +15,7 @@ import { Text, View } from './Themed';
 import iconSet from '@expo/vector-icons/build/FontAwesome5';
 
 export default function EditScreenInfo({ path }: { path: string }) {
+  // initialize 'location' and 'errorMsg' state variables, and set initial values to 'null'
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
