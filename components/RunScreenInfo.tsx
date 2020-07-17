@@ -6,6 +6,7 @@ import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 
+
 const icon = require('../assets/images/favicon.png');
 
 import Colors from '../constants/Colors';
@@ -16,6 +17,7 @@ import iconSet from '@expo/vector-icons/build/FontAwesome5';
 export default function EditScreenInfo({ path }: { path: string }) {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+
 
   useEffect(() => {
     if (Platform.OS === 'android' && !Constants.isDevice) {
@@ -38,6 +40,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
   let text = 'Waiting..';
   let latitude = 0;
   let longitude = 0;
+  
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
