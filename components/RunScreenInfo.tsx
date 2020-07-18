@@ -2,22 +2,49 @@ import * as WebBrowser from 'expo-web-browser';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
 import MapView, { Marker, AnimatedRegion } from 'react-native-maps';
+import * as TaskManager from 'expo-task-manager';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 
 
-const icon = require('../assets/images/favicon.png');
+const icon = require('../assets/images/dot.png');
 
 import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 import iconSet from '@expo/vector-icons/build/FontAwesome5';
 
+
+
 export default function EditScreenInfo({ path }: { path: string }) {
   // initialize 'location' and 'errorMsg' state variables, and set initial values to 'null'
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+
+
+  // defining background location task:
+  TaskManager.defineTask('backgroundTask', ({ data, error }) => {
+    console.log('running');
+    if (error) {
+      // Error occurred - check `error.message` for more details.
+      return;
+    }
+
+    if (data) {
+      const { latitude, longitude } = data.locations[0].coords;
+
+      let location = {
+        coords: {
+          latitude,
+          longitude
+        }
+      };
+
+      setLocation(location);
+      console.log(location);
+    }
+  });
 
 
   useEffect(() => {
@@ -32,14 +59,17 @@ export default function EditScreenInfo({ path }: { path: string }) {
         // if access is denied:
         if (status !== 'granted') {
           setErrorMsg('Permission to access location was denied');
+        } else if (status === 'granted') {
+          // if access is not denied, save current position as 'location' variable
+          await Location.startLocationUpdatesAsync('backgroundTask',{
+            accuracy: Location.Accuracy.Highest,
+          });
         }
-        
-        // if access is not denied, save current position as 'location' variable
-        let location = await Location.getCurrentPositionAsync({});
-        setLocation(location);
       })();
     }
   });
+
+    
 
   let text = 'Waiting..';
   let latitude = 0;
