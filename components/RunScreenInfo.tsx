@@ -63,6 +63,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
           // if access is not denied, save current position as 'location' variable
           await Location.startLocationUpdatesAsync('backgroundTask',{
             accuracy: Location.Accuracy.Highest,
+            activityType: Location.ActivityType.Fitness
           });
         }
       })();
