@@ -34,10 +34,10 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Character"
+        name="Quests"
         component={TabThreeNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="user-circle" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="question" color={color} />,
         }}
       />
     </BottomTab.Navigator>
