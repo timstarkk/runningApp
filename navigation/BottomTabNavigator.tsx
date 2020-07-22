@@ -23,7 +23,7 @@ export default function BottomTabNavigator() {
         name="Friends"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="user-friends" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="smile" color={color} />,
         }}
       />
       <BottomTab.Screen
