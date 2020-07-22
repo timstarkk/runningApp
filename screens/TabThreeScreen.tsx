@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 
-import CharacterScreenInfo from '../components/CharacterScreenInfo';
+import AchievementsScreenInfo from '../components/AchievementsScreenInfo';
 import { Text, View } from '../components/Themed';
 
 export default function TabThreeScreen() {
@@ -9,7 +9,7 @@ export default function TabThreeScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Character</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <CharacterScreenInfo path="/screens/TabThreeScreen.tsx" />
+      <AchievementsScreenInfo path="/screens/TabThreeScreen.tsx" />
     </View>
   );
 }
