@@ -60,7 +60,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Friends' }}
+        options={{ headerTitle: 'Friends', headerLeft: () => <FontAwesome5 size={30} style={{ marginBottom: -3, marginLeft: 15 }} color="grey" name="user-circle"/>}}
       />
     </TabOneStack.Navigator>
   );
@@ -74,7 +74,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Run' }}
+        options={{ headerTitle: 'Run', headerLeft: () => <FontAwesome5 size={30} style={{ marginBottom: -3, marginLeft: 15 }} color="grey" name="user-circle"/>}}
       />
     </TabTwoStack.Navigator>
   );
@@ -88,7 +88,7 @@ function TabThreeNavigator() {
       <TabThreeStack.Screen
         name="TabThreeScreen"
         component={TabThreeScreen}
-        options={{ headerTitle: 'Character' }}
+        options={{ headerTitle: 'Quests', headerLeft: () => <FontAwesome5 size={30} style={{ marginBottom: -3, marginLeft: 15 }} color="grey" name="user-circle"/>}}
       />
     </TabThreeStack.Navigator>
   );
