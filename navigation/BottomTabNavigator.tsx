@@ -1,6 +1,7 @@
 import { FontAwesome5 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Button } from 'react-native';
 import * as React from 'react';
 
 import Colors from '../constants/Colors';
@@ -8,7 +9,8 @@ import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import TabThreeScreen from '../screens/TabThreeScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList } from '../types';
+import AccountScreen from '../screens/AccountScreen';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList, AccountTabParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -60,7 +62,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Friends', headerLeft: () => <FontAwesome5 size={30} style={{ marginBottom: -3, marginLeft: 15 }} color="grey" name="user-circle"/>}}
+        options={{ headerTitle: 'Friends', headerLeft: () => <Button title=": )" onPress={() => navigation.navigate('Account')} />}}
       />
     </TabOneStack.Navigator>
   );
@@ -92,4 +94,18 @@ function TabThreeNavigator() {
       />
     </TabThreeStack.Navigator>
   );
+}
+
+const AccountTabStack = createStackNavigator<AccountTabParamList>();
+
+function AccountTabNavigator() {
+  return (
+    <AccountTabStack.Navigator>
+      <AccountTabStack.Screen 
+        name="AccountTabScreen"
+        component={AccountScreen}
+        options={{ headerTitle: 'Character', headerLeft: () => <FontAwesome5 size={30} style={{ marginBottom: -3, marginLeft: 15 }} color="grey" name="user-circle"/>}}
+      />
+    </AccountTabStack.Navigator>
+  )
 }
