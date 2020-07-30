@@ -56,7 +56,7 @@ function TabBarIcon(props: { name: string; color: string }) {
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 const TabOneStack = createStackNavigator<TabOneParamList>();
 
-function TabOneNavigator() {
+function TabOneNavigator({navigation}) {
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
