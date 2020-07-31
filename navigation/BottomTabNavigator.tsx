@@ -76,7 +76,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Run', headerLeft: () => <FontAwesome5 size={30} style={{ marginBottom: -3, marginLeft: 15 }} color="grey" name="user-circle"/>}}
+        options={{ headerTitle: 'Run', headerLeft: () => <Button title=": )" onPress={() => navigation.navigate('Account')} />}}
       />
     </TabTwoStack.Navigator>
   );
@@ -90,22 +90,8 @@ function TabThreeNavigator() {
       <TabThreeStack.Screen
         name="TabThreeScreen"
         component={TabThreeScreen}
-        options={{ headerTitle: 'Quests', headerLeft: () => <FontAwesome5 size={30} style={{ marginBottom: -3, marginLeft: 15 }} color="grey" name="user-circle"/>}}
+        options={{ headerTitle: 'Quests', headerLeft: () => <Button title=": )" onPress={() => navigation.navigate('Account')} />}}
       />
     </TabThreeStack.Navigator>
   );
-}
-
-const AccountTabStack = createStackNavigator<AccountTabParamList>();
-
-function AccountTabNavigator() {
-  return (
-    <AccountTabStack.Navigator>
-      <AccountTabStack.Screen 
-        name="AccountTabScreen"
-        component={AccountScreen}
-        options={{ headerTitle: 'Character', headerLeft: () => <FontAwesome5 size={30} style={{ marginBottom: -3, marginLeft: 15 }} color="grey" name="user-circle"/>}}
-      />
-    </AccountTabStack.Navigator>
-  )
 }
