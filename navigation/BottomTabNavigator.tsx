@@ -70,7 +70,7 @@ function TabOneNavigator({navigation}) {
 
 const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
-function TabTwoNavigator() {
+function TabTwoNavigator({navigation}) {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
@@ -84,7 +84,7 @@ function TabTwoNavigator() {
 
 const TabThreeStack = createStackNavigator<TabThreeParamList>();
 
-function TabThreeNavigator() {
+function TabThreeNavigator({navigation}) {
   return (
     <TabThreeStack.Navigator>
       <TabThreeStack.Screen
