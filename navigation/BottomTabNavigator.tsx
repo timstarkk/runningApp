@@ -1,7 +1,7 @@
 import { FontAwesome5 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Button } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
 import * as React from 'react';
 
 import Colors from '../constants/Colors';
@@ -62,7 +62,7 @@ function TabOneNavigator({navigation}) {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Friends', headerLeft: () => <Button title=": )" onPress={() => navigation.navigate('Account')} />}}
+        options={{ headerTitle: 'Friends', headerLeft: () => <FontAwesome5.Button name="user-circle" color="grey" backgroundColor="transparent" size={25} onPress={() => navigation.navigate('Account')} />}}
       />
     </TabOneStack.Navigator>
   );
@@ -95,3 +95,11 @@ function TabThreeNavigator({navigation}) {
     </TabThreeStack.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});
