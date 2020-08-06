@@ -25,7 +25,6 @@ export default function EditScreenInfo({ path }: { path: string }) {
 
   // defining background location task:
   TaskManager.defineTask('backgroundTask', ({ data, error }) => {
-    console.log('running');
     if (error) {
       // Error occurred - check `error.message` for more details.
       return;
@@ -42,7 +41,6 @@ export default function EditScreenInfo({ path }: { path: string }) {
       };
 
       setLocation(location);
-      console.log(location);
     }
   });
 
