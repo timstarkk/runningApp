@@ -1,7 +1,7 @@
 import { FontAwesome5 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet, Button, Linking, Text, Platform } from 'react-native';
 import * as React from 'react';
 
 import Colors from '../constants/Colors';
@@ -11,6 +11,12 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import TabThreeScreen from '../screens/TabThreeScreen';
 import AccountScreen from '../screens/AccountScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList, AccountTabParamList } from '../types';
+
+
+import { useRef } from 'react';
+import { useHover, useFocus, useActive } from 'react-native-web-hooks';
+
+
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
