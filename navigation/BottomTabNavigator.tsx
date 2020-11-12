@@ -15,6 +15,7 @@ import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList
 
 import { useRef } from 'react';
 import { useHover, useFocus, useActive } from 'react-native-web-hooks';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 
@@ -68,7 +69,11 @@ function TabOneNavigator({navigation}) {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Friends', headerLeft: () => <FontAwesome5.Button name="user-circle" color="grey" backgroundColor="transparent" size={25} onPress={() => navigation.navigate('Account')} />}}
+        options={{ headerTitle: 'Friends', headerLeft: () => 
+          <TouchableOpacity onPress={() => navigation.navigate('Account')}>
+            <FontAwesome5.Button name="user-circle" color="grey" backgroundColor="transparent" size={25} />
+          </TouchableOpacity>
+        }}
       />
     </TabOneStack.Navigator>
   );
@@ -82,7 +87,11 @@ function TabTwoNavigator({navigation}) {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Run', headerLeft: () => <Button title=": )" onPress={() => navigation.navigate('Account')} />}}
+        options={{ headerTitle: 'Run', headerLeft: () =>
+          <TouchableOpacity onPress={() => navigation.navigate('Account')}>
+            <FontAwesome5.Button name="user-circle" color="grey" backgroundColor="transparent" size={25} />
+          </TouchableOpacity>
+        }}
       />
     </TabTwoStack.Navigator>
   );
@@ -96,7 +105,11 @@ function TabThreeNavigator({navigation}) {
       <TabThreeStack.Screen
         name="TabThreeScreen"
         component={TabThreeScreen}
-        options={{ headerTitle: 'Quests', headerLeft: () => <Button title=": )" onPress={() => navigation.navigate('Account')} />}}
+        options={{ headerTitle: 'Quests', headerLeft: () => 
+          <TouchableOpacity onPress={() => navigation.navigate('Account')}>
+            <FontAwesome5.Button name="user-circle" color="grey" backgroundColor="transparent" size={25} />
+          </TouchableOpacity>
+        }}
       />
     </TabThreeStack.Navigator>
   );
