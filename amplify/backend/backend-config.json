@@ -1,1 +1,10 @@
-{}
+{
+  "auth": {
+    "runningappe2f8565f": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
