@@ -28,7 +28,7 @@
     "expo-status-bar": "^1.0.2",
     "expo-task-manager": "~8.3.0",
     "expo-web-browser": "~8.3.1",
-    "pubnub": "^4.28.2",
+    "pubnub": "^7.4.0",
     "pubnub-react": "^2.0.0",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
